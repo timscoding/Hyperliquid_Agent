@@ -1,0 +1,329 @@
+# Astrology Trading Rules Configuration
+#
+# This file defines how astrological aspects and planetary positions
+# are interpreted for trading signals.
+#
+# Signal Types: bullish, bearish, neutral
+# Strength: 0-10 (higher = stronger signal)
+
+aspect_rules:
+  # ========================================
+  # JUPITER ASPECTS (Expansion, Optimism, Growth)
+  # ========================================
+
+  jupiter-sun-conjunction:
+    signal: bullish
+    strength: 8
+    description: "Jupiter-Sun conjunction brings optimism and expansion energy"
+
+  jupiter-sun-trine:
+    signal: bullish
+    strength: 7
+    description: "Jupiter-Sun trine suggests harmonious growth opportunities"
+
+  jupiter-moon-trine:
+    signal: bullish
+    strength: 6
+    description: "Jupiter-Moon trine indicates positive emotional sentiment"
+
+  jupiter-venus-conjunction:
+    signal: bullish
+    strength: 8
+    description: "Jupiter-Venus conjunction is highly favorable for asset appreciation"
+
+  jupiter-venus-trine:
+    signal: bullish
+    strength: 7
+    description: "Jupiter-Venus trine supports value expansion"
+
+  jupiter-mars-trine:
+    signal: bullish
+    strength: 7
+    description: "Jupiter-Mars trine combines confident action with expansion"
+
+  jupiter-saturn-trine:
+    signal: bullish
+    strength: 8
+    description: "Jupiter-Saturn trine indicates stable, sustainable growth"
+
+  jupiter-saturn-sextile:
+    signal: bullish
+    strength: 6
+    description: "Jupiter-Saturn sextile supports measured expansion"
+
+  jupiter-uranus-trine:
+    signal: bullish
+    strength: 7
+    description: "Jupiter-Uranus trine brings innovative growth opportunities"
+
+  jupiter-neptune-trine:
+    signal: neutral
+    strength: 5
+    description: "Jupiter-Neptune trine can indicate unrealistic optimism - use caution"
+
+  # ========================================
+  # SATURN ASPECTS (Restriction, Structure, Reality)
+  # ========================================
+
+  saturn-sun-square:
+    signal: bearish
+    strength: 6
+    description: "Saturn-Sun square suggests limitations and obstacles"
+
+  saturn-sun-opposition:
+    signal: bearish
+    strength: 7
+    description: "Saturn-Sun opposition indicates restrictive conditions"
+
+  saturn-moon-square:
+    signal: bearish
+    strength: 5
+    description: "Saturn-Moon square brings pessimistic sentiment"
+
+  saturn-venus-square:
+    signal: bearish
+    strength: 6
+    description: "Saturn-Venus square restricts value appreciation"
+
+  saturn-venus-opposition:
+    signal: bearish
+    strength: 7
+    description: "Saturn-Venus opposition indicates value contraction"
+
+  saturn-mars-square:
+    signal: bearish
+    strength: 6
+    description: "Saturn-Mars square frustrates action and momentum"
+
+  saturn-mars-opposition:
+    signal: bearish
+    strength: 7
+    description: "Saturn-Mars opposition blocks forward movement"
+
+  saturn-jupiter-square:
+    signal: neutral
+    strength: 5
+    description: "Saturn-Jupiter square balances optimism with reality"
+
+  saturn-neptune-square:
+    signal: bearish
+    strength: 6
+    description: "Saturn-Neptune square brings confusion and uncertainty"
+
+  # ========================================
+  # MARS ASPECTS (Energy, Action, Aggression)
+  # ========================================
+
+  mars-sun-conjunction:
+    signal: bullish
+    strength: 6
+    description: "Mars-Sun conjunction brings energetic action"
+
+  mars-sun-trine:
+    signal: bullish
+    strength: 7
+    description: "Mars-Sun trine indicates confident forward movement"
+
+  mars-venus-conjunction:
+    signal: bullish
+    strength: 6
+    description: "Mars-Venus conjunction energizes value appreciation"
+
+  mars-jupiter-conjunction:
+    signal: bullish
+    strength: 8
+    description: "Mars-Jupiter conjunction combines action with expansion"
+
+  mars-saturn-conjunction:
+    signal: neutral
+    strength: 4
+    description: "Mars-Saturn conjunction shows controlled action - mixed energy"
+
+  mars-uranus-conjunction:
+    signal: neutral
+    strength: 5
+    description: "Mars-Uranus conjunction brings volatility - trade cautiously"
+
+  mars-uranus-square:
+    signal: bearish
+    strength: 6
+    description: "Mars-Uranus square indicates sudden disruptions"
+
+  mars-neptune-square:
+    signal: bearish
+    strength: 5
+    description: "Mars-Neptune square brings misdirected energy"
+
+  # ========================================
+  # VENUS ASPECTS (Value, Harmony, Resources)
+  # ========================================
+
+  venus-sun-conjunction:
+    signal: bullish
+    strength: 6
+    description: "Venus-Sun conjunction favors value and appreciation"
+
+  venus-sun-trine:
+    signal: bullish
+    strength: 7
+    description: "Venus-Sun trine supports harmonious value growth"
+
+  venus-moon-trine:
+    signal: bullish
+    strength: 6
+    description: "Venus-Moon trine indicates positive market sentiment"
+
+  venus-mercury-conjunction:
+    signal: neutral
+    strength: 5
+    description: "Venus-Mercury conjunction supports analysis and valuation"
+
+  venus-uranus-conjunction:
+    signal: neutral
+    strength: 5
+    description: "Venus-Uranus conjunction brings unpredictable value changes"
+
+  venus-neptune-square:
+    signal: bearish
+    strength: 5
+    description: "Venus-Neptune square indicates unrealistic valuations"
+
+  venus-pluto-square:
+    signal: bearish
+    strength: 6
+    description: "Venus-Pluto square suggests value transformations and losses"
+
+  # ========================================
+  # MERCURY ASPECTS (Communication, Analysis, Information)
+  # ========================================
+
+  mercury-sun-conjunction:
+    signal: neutral
+    strength: 5
+    description: "Mercury-Sun conjunction enhances analytical clarity"
+
+  mercury-jupiter-trine:
+    signal: bullish
+    strength: 6
+    description: "Mercury-Jupiter trine supports positive information flow"
+
+  mercury-saturn-square:
+    signal: bearish
+    strength: 5
+    description: "Mercury-Saturn square brings pessimistic analysis"
+
+  mercury-uranus-conjunction:
+    signal: neutral
+    strength: 5
+    description: "Mercury-Uranus conjunction brings sudden news - volatile"
+
+  mercury-neptune-square:
+    signal: bearish
+    strength: 6
+    description: "Mercury-Neptune square indicates misinformation and confusion"
+
+  # ========================================
+  # OUTER PLANET ASPECTS (Long-term trends)
+  # ========================================
+
+  uranus-neptune-sextile:
+    signal: neutral
+    strength: 4
+    description: "Uranus-Neptune sextile indicates generational innovation"
+
+  uranus-pluto-square:
+    signal: neutral
+    strength: 5
+    description: "Uranus-Pluto square brings transformation - highly volatile"
+
+  neptune-pluto-sextile:
+    signal: neutral
+    strength: 4
+    description: "Neptune-Pluto sextile indicates deep generational changes"
+
+# ========================================
+# PLANETARY POSITION RULES
+# ========================================
+
+position_rules:
+  # Jupiter in signs (expansion energy)
+  jupiter-aries:
+    signal: bullish
+    strength: 6
+    description: "Jupiter in Aries brings pioneering expansion energy"
+
+  jupiter-leo:
+    signal: bullish
+    strength: 6
+    description: "Jupiter in Leo indicates confident growth"
+
+  jupiter-sagittarius:
+    signal: bullish
+    strength: 7
+    description: "Jupiter in Sagittarius (rulership) - strong expansion"
+
+  jupiter-pisces:
+    signal: bullish
+    strength: 6
+    description: "Jupiter in Pisces (exaltation) - abundant growth"
+
+  jupiter-capricorn:
+    signal: neutral
+    strength: 4
+    description: "Jupiter in Capricorn (fall) - restricted expansion"
+
+  # Saturn in signs (restriction energy)
+  saturn-aries:
+    signal: neutral
+    strength: 4
+    description: "Saturn in Aries creates tension between caution and action"
+
+  saturn-cancer:
+    signal: bearish
+    strength: 5
+    description: "Saturn in Cancer (detriment) increases insecurity"
+
+  saturn-capricorn:
+    signal: neutral
+    strength: 6
+    description: "Saturn in Capricorn (rulership) - structured discipline"
+
+  saturn-libra:
+    signal: neutral
+    strength: 6
+    description: "Saturn in Libra (exaltation) - balanced restriction"
+
+  # Mars in signs (action energy)
+  mars-aries:
+    signal: bullish
+    strength: 6
+    description: "Mars in Aries (rulership) - strong action energy"
+
+  mars-capricorn:
+    signal: bullish
+    strength: 6
+    description: "Mars in Capricorn (exaltation) - disciplined action"
+
+  mars-cancer:
+    signal: bearish
+    strength: 5
+    description: "Mars in Cancer (fall) - frustrated action"
+
+  mars-libra:
+    signal: neutral
+    strength: 4
+    description: "Mars in Libra (detriment) - hesitant action"
+
+# ========================================
+# SETTINGS
+# ========================================
+
+settings:
+  # Maximum orb (deviation in degrees) for aspect detection
+  orb_tolerance: 8
+
+  # Timezone for calculations
+  timezone: "UTC"
+
+  # Minimum confidence threshold for signals (0-10)
+  min_confidence: 3

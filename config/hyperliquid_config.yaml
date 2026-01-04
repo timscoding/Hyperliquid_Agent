@@ -1,0 +1,80 @@
+# Hyperliquid Trading Configuration
+
+# Environment settings
+testnet: true  # Set to false for mainnet trading
+
+# Trading parameters
+trading:
+  default_slippage: 0.05  # 5% max slippage for market orders
+  max_position_size_usd: 10000  # Maximum position size in USD
+  use_limit_orders: false  # Use limit orders instead of market orders
+  limit_order_offset: 0.001  # Offset from market price for limit orders (0.1%)
+
+# Risk management
+risk_management:
+  max_leverage: 5  # Maximum leverage to use
+  stop_loss_percent: 0.05  # 5% stop loss
+  take_profit_percent: 0.15  # 15% take profit
+  liquidation_buffer: 0.20  # Stay 20% away from liquidation price
+  max_drawdown: 0.30  # Maximum allowed drawdown (30%)
+  position_size_percent: 0.10  # Use 10% of account per trade
+
+# Asset mapping (TradingAgents symbol -> Hyperliquid symbol)
+asset_mapping:
+  BTC: "BTC"
+  ETH: "ETH"
+  SOL: "SOL"
+  AVAX: "AVAX"
+  MATIC: "MATIC"
+  ARB: "ARB"
+  OP: "OP"
+  ATOM: "ATOM"
+  LINK: "LINK"
+  UNI: "UNI"
+  # Add more mappings as needed
+
+# Crypto-specific risk factors
+crypto_risks:
+  # Volatility multipliers by asset
+  volatility_multipliers:
+    BTC: 1.0  # Baseline
+    ETH: 1.2
+    SOL: 1.5
+    AVAX: 1.6
+    MATIC: 1.7
+    ARB: 1.8
+    OP: 1.8
+    default: 2.0  # For unlisted assets
+
+  # Minimum time between trades (seconds)
+  min_trade_interval: 300  # 5 minutes
+
+  # Market hours (24/7 for crypto, but can configure)
+  trading_enabled_24_7: true
+
+# Execution settings
+execution:
+  retry_attempts: 3  # Number of retries for failed orders
+  retry_delay: 2  # Seconds between retries
+  order_timeout: 30  # Seconds before order times out
+  partial_fill_threshold: 0.90  # Accept fills >= 90% of requested size
+
+# Monitoring and alerts
+monitoring:
+  check_liquidation_risk: true  # Monitor liquidation distance
+  alert_on_large_slippage: true  # Alert if slippage > threshold
+  slippage_alert_threshold: 0.02  # 2%
+  log_all_trades: true  # Log every trade to file
+
+# Safety limits
+safety:
+  max_daily_trades: 50  # Maximum trades per day
+  max_daily_loss_usd: 1000  # Max loss per day in USD
+  emergency_stop_drawdown: 0.50  # Stop all trading at 50% drawdown
+  require_confirmation_mainnet: true  # Require confirmation for mainnet trades
+
+# Advanced settings
+advanced:
+  use_post_only: false  # Use post-only orders (maker only)
+  reduce_only_on_stop: true  # Only reduce positions when stopping
+  cancel_orders_on_shutdown: true  # Cancel all open orders on shutdown

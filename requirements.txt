@@ -18,6 +18,10 @@ parsel
 requests
 tqdm
 pytz
+pyyaml>=6.0
+kerykeion>=4.14.0
+hyperliquid-python-sdk
+eth-account>=0.10.0
 redis
 chainlit
 rich

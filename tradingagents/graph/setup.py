@@ -85,6 +85,13 @@ class GraphSetup:
             delete_nodes["fundamentals"] = create_msg_delete()
             tool_nodes["fundamentals"] = self.tool_nodes["fundamentals"]
 
+        if "astrology" in selected_analysts:
+            analyst_nodes["astrology"] = create_astrology_analyst(
+                self.quick_thinking_llm
+            )
+            delete_nodes["astrology"] = create_msg_delete()
+            # No tool node for astrology - calculations are internal
+
         # Create researcher and manager nodes
         bull_researcher_node = create_bull_researcher(
             self.quick_thinking_llm, self.bull_memory
@@ -114,7 +121,9 @@ class GraphSetup:
             workflow.add_node(
                 f"Msg Clear {analyst_type.capitalize()}", delete_nodes[analyst_type]
             )
-            workflow.add_node(f"tools_{analyst_type}", tool_nodes[analyst_type])
+            # Only add tool nodes for analysts that have external tools
+            if analyst_type in tool_nodes:
+                workflow.add_node(f"tools_{analyst_type}", tool_nodes[analyst_type])
 
         # Add other nodes
         workflow.add_node("Bull Researcher", bull_researcher_node)
@@ -138,12 +147,16 @@ class GraphSetup:
             current_clear = f"Msg Clear {analyst_type.capitalize()}"
 
             # Add conditional edges for current analyst
-            workflow.add_conditional_edges(
-                current_analyst,
-                getattr(self.conditional_logic, f"should_continue_{analyst_type}"),
-                [current_tools, current_clear],
-            )
-            workflow.add_edge(current_tools, current_analyst)
+            # Astrology has no tools, so go directly to clear
+            if analyst_type == "astrology":
+                workflow.add_edge(current_analyst, current_clear)
+            else:
+                workflow.add_conditional_edges(
+                    current_analyst,
+                    getattr(self.conditional_logic, f"should_continue_{analyst_type}"),
+                    [current_tools, current_clear],
+                )
+                workflow.add_edge(current_tools, current_analyst)
 
             # Connect to next analyst or to Bull Researcher if this is the last analyst
             if i < len(selected_analysts) - 1:

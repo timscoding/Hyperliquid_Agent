@@ -10,8 +10,8 @@ DEFAULT_CONFIG = {
     ),
     # LLM settings
     "llm_provider": "openai",
-    "deep_think_llm": "o4-mini",
-    "quick_think_llm": "gpt-4o-mini",
+    "deep_think_llm": "gpt-4o-mini",
+    "quick_think_llm": "gpt-5-nano",
     "backend_url": "https://api.openai.com/v1",
     # Debate and discussion settings
     "max_debate_rounds": 1,
@@ -29,5 +29,28 @@ DEFAULT_CONFIG = {
     "tool_vendors": {
         # Example: "get_stock_data": "alpha_vantage",  # Override category default
         # Example: "get_news": "openai",               # Override category default
+    },
+    # Astrology settings
+    "astrology_enabled": True,
+    "astrology_rules_path": "config/astrology_rules.yaml",
+    "astrology_orb_tolerance": 8,
+    "astrology_location": {
+        "city": "New York",
+        "nation": "US",
+        "lng": -74.0060,
+        "lat": 40.7128,
+        "tz_str": "America/New_York"
+    },
+    # Execution settings
+    "use_real_execution": False,  # Set to True for real Hyperliquid trading
+    "hyperliquid_testnet": True,  # Always start with testnet!
+    "simulated_balance": 10000.0,
+    # Asset mapping (symbol -> Hyperliquid symbol)
+    "asset_mapping": {
+        "BTC": "BTC",
+        "ETH": "ETH",
+        "SOL": "SOL",
+        "AVAX": "AVAX",
+        "MATIC": "MATIC",
     },
 }

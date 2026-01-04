@@ -42,6 +42,13 @@ from .propagation import Propagator
 from .reflection import Reflector
 from .signal_processing import SignalProcessor
 
+# Import execution layer
+from tradingagents.execution import (
+    BaseExecutor,
+    SimulatedExecutor,
+    HyperliquidExecutor,
+)
+
 
 class TradingAgentsGraph:
     """Main class that orchestrates the trading agents framework."""
@@ -90,6 +97,9 @@ class TradingAgentsGraph:
         self.trader_memory = FinancialSituationMemory("trader_memory", self.config)
         self.invest_judge_memory = FinancialSituationMemory("invest_judge_memory", self.config)
         self.risk_manager_memory = FinancialSituationMemory("risk_manager_memory", self.config)
+
+        # Initialize execution layer
+        self.executor = self._initialize_executor()
 
         # Create tool nodes
         self.tool_nodes = self._create_tool_nodes()
@@ -153,6 +163,32 @@ class TradingAgentsGraph:
                     get_balance_sheet,
                     get_cashflow,
                     get_income_statement,
+
+    def _initialize_executor(self) -> BaseExecutor:
+        """Initialize the order executor (simulated or real Hyperliquid)."""
+        use_real_execution = self.config.get("use_real_execution", False)
+
+        if use_real_execution:
+            # Initialize Hyperliquid executor
+            testnet = self.config.get("hyperliquid_testnet", True)
+            hl_config = self.config.get("hyperliquid_config", {})
+
+            try:
+                executor = HyperliquidExecutor(testnet=testnet, config=hl_config)
+                if self.debug:
+                    print(f"✅ Initialized Hyperliquid Executor ({'TESTNET' if testnet else 'MAINNET'})")
+                return executor
+            except Exception as e:
+                print(f"⚠️  Failed to initialize Hyperliquid: {e}")
+                print("   Falling back to simulated execution")
+                return SimulatedExecutor(initial_balance=10000.0)
+        else:
+            # Use simulated executor
+            initial_balance = self.config.get("simulated_balance", 10000.0)
+            executor = SimulatedExecutor(initial_balance=initial_balance)
+            if self.debug:
+                print(f"✅ Initialized Simulated Executor (${initial_balance:,.2f})")
+            return executor
                 ]
             ),
         }
@@ -255,3 +291,25 @@ class TradingAgentsGraph:
     def process_signal(self, full_signal):
         """Process a signal to extract the core decision."""
         return self.signal_processor.process_signal(full_signal)
+
+
+    def execute_trade(self, asset: str, action: str, size: float = 1.0) -> Dict:
+        """Execute a trade via the configured executor."""
+        try:
+            asset_mapping = self.config.get('asset_mapping', {})
+            crypto_asset = asset_mapping.get(asset, asset)
+            
+            if action == 'BUY':
+                result = self.executor.place_order(asset=crypto_asset, side='buy', size=size, order_type='market')
+            elif action == 'SELL':
+                result = self.executor.place_order(asset=crypto_asset, side='sell', size=size, order_type='market')
+            else:
+                return {'success': False, 'error': f'Invalid action: {action}'}
+            
+            if self.debug and result.get('success'):
+                print(f"✅ {action} {size} {crypto_asset} @ ${result.get('average_price', 0):.2f}")
+            
+            return result
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+

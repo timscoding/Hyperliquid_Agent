@@ -1,11 +1,37 @@
-.venv
-results
-env/
-__pycache__/
-.DS_Store
-*.csv
-src/
-eval_results/
-eval_data/
-*.egg-info/
+# ================================================
+# SECURITY: NEVER COMMIT THESE FILES!
+# ================================================
+
+# Environment variables with API keys
 .env
+.env.local
+.env.*.local
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv
+
+# Data and cache
+dataflows/data_cache/
+*.csv
+*.log
+
+# Results
+results/
+logs/
+backtest_results/
+trade_history/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
