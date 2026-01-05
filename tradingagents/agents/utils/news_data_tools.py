@@ -1,6 +1,7 @@
 from langchain_core.tools import tool
 from typing import Annotated
 from tradingagents.dataflows.interface import route_to_vendor
+from tradingagents.agents.utils.core_stock_tools import is_crypto, get_crypto_symbol
 
 @tool
 def get_news(
@@ -10,14 +11,18 @@ def get_news(
 ) -> str:
     """
     Retrieve news data for a given ticker symbol.
-    Uses the configured news_data vendor.
+    Routes to crypto news for crypto symbols.
     Args:
-        ticker (str): Ticker symbol
+        ticker (str): Ticker symbol (stock or crypto)
         start_date (str): Start date in yyyy-mm-dd format
         end_date (str): End date in yyyy-mm-dd format
     Returns:
         str: A formatted string containing news data
     """
+    if is_crypto(ticker):
+        # Convert full name to symbol (e.g., "Bitcoin" -> "BTC")
+        crypto_symbol = get_crypto_symbol(ticker)
+        return route_to_vendor("get_crypto_news", crypto_symbol, start_date, end_date)
     return route_to_vendor("get_news", ticker, start_date, end_date)
 
 @tool

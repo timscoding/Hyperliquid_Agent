@@ -163,6 +163,9 @@ class TradingAgentsGraph:
                     get_balance_sheet,
                     get_cashflow,
                     get_income_statement,
+                ]
+            ),
+        }
 
     def _initialize_executor(self) -> BaseExecutor:
         """Initialize the order executor (simulated or real Hyperliquid)."""
@@ -176,10 +179,10 @@ class TradingAgentsGraph:
             try:
                 executor = HyperliquidExecutor(testnet=testnet, config=hl_config)
                 if self.debug:
-                    print(f"✅ Initialized Hyperliquid Executor ({'TESTNET' if testnet else 'MAINNET'})")
+                    print(f"[OK] Initialized Hyperliquid Executor ({'TESTNET' if testnet else 'MAINNET'})")
                 return executor
             except Exception as e:
-                print(f"⚠️  Failed to initialize Hyperliquid: {e}")
+                print(f"[WARN] Failed to initialize Hyperliquid: {e}")
                 print("   Falling back to simulated execution")
                 return SimulatedExecutor(initial_balance=10000.0)
         else:
@@ -187,11 +190,8 @@ class TradingAgentsGraph:
             initial_balance = self.config.get("simulated_balance", 10000.0)
             executor = SimulatedExecutor(initial_balance=initial_balance)
             if self.debug:
-                print(f"✅ Initialized Simulated Executor (${initial_balance:,.2f})")
+                print(f"[OK] Initialized Simulated Executor (${initial_balance:,.2f})")
             return executor
-                ]
-            ),
-        }
 
     def propagate(self, company_name, trade_date):
         """Run the trading agents graph for a company on a specific date."""
@@ -307,7 +307,7 @@ class TradingAgentsGraph:
                 return {'success': False, 'error': f'Invalid action: {action}'}
             
             if self.debug and result.get('success'):
-                print(f"✅ {action} {size} {crypto_asset} @ ${result.get('average_price', 0):.2f}")
+                print(f"[OK] {action} {size} {crypto_asset} @ ${result.get('average_price', 0):.2f}")
             
             return result
         except Exception as e:

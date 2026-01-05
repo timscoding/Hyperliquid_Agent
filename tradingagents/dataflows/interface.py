@@ -16,6 +16,9 @@ from .alpha_vantage import (
     get_news as get_alpha_vantage_news
 )
 from .alpha_vantage_common import AlphaVantageRateLimitError
+# Crypto-specific imports
+from .alpha_vantage_crypto import get_crypto_daily as get_alpha_vantage_crypto_daily, get_crypto_news as get_alpha_vantage_crypto_news
+from .coinmarketcap import get_crypto_fundamentals as get_coinmarketcap_fundamentals
 
 # Configuration and routing logic
 from .config import get_config
@@ -26,6 +29,12 @@ TOOLS_CATEGORIES = {
         "description": "OHLCV stock price data",
         "tools": [
             "get_stock_data"
+        ]
+    },
+    "core_crypto_apis": {
+        "description": "OHLCV crypto price data",
+        "tools": [
+            "get_crypto_daily"
         ]
     },
     "technical_indicators": {
@@ -43,6 +52,12 @@ TOOLS_CATEGORIES = {
             "get_income_statement"
         ]
     },
+    "crypto_fundamentals": {
+        "description": "Crypto market data (market cap, supply, etc.)",
+        "tools": [
+            "get_crypto_fundamentals"
+        ]
+    },
     "news_data": {
         "description": "News (public/insiders, original/processed)",
         "tools": [
@@ -50,6 +65,7 @@ TOOLS_CATEGORIES = {
             "get_global_news",
             "get_insider_sentiment",
             "get_insider_transactions",
+            "get_crypto_news",
         ]
     }
 }
@@ -58,7 +74,9 @@ VENDOR_LIST = [
     "local",
     "yfinance",
     "openai",
-    "google"
+    "google",
+    "alpha_vantage",
+    "coinmarketcap"
 ]
 
 # Mapping of methods to their vendor-specific implementations
@@ -68,6 +86,10 @@ VENDOR_METHODS = {
         "alpha_vantage": get_alpha_vantage_stock,
         "yfinance": get_YFin_data_online,
         "local": get_YFin_data,
+    },
+    # core_crypto_apis
+    "get_crypto_daily": {
+        "alpha_vantage": get_alpha_vantage_crypto_daily,
     },
     # technical_indicators
     "get_indicators": {
@@ -79,6 +101,10 @@ VENDOR_METHODS = {
     "get_fundamentals": {
         "alpha_vantage": get_alpha_vantage_fundamentals,
         "openai": get_fundamentals_openai,
+    },
+    # crypto_fundamentals
+    "get_crypto_fundamentals": {
+        "coinmarketcap": get_coinmarketcap_fundamentals,
     },
     "get_balance_sheet": {
         "alpha_vantage": get_alpha_vantage_balance_sheet,
@@ -101,6 +127,11 @@ VENDOR_METHODS = {
         "openai": get_stock_news_openai,
         "google": get_google_news,
         "local": [get_finnhub_news, get_reddit_company_news, get_google_news],
+    },
+    "get_crypto_news": {
+        "alpha_vantage": get_alpha_vantage_crypto_news,
+        "google": get_google_news,  # Fallback without CRYPTO: prefix
+        "local": get_reddit_company_news,  # Fallback
     },
     "get_global_news": {
         "openai": get_global_news_openai,
@@ -159,8 +190,8 @@ def route_to_vendor(method: str, *args, **kwargs):
             fallback_vendors.append(vendor)
 
     # Debug: Print fallback ordering
-    primary_str = " → ".join(primary_vendors)
-    fallback_str = " → ".join(fallback_vendors)
+    primary_str = " -> ".join(primary_vendors)
+    fallback_str = " -> ".join(fallback_vendors)
     print(f"DEBUG: {method} - Primary: [{primary_str}] | Full fallback order: [{fallback_str}]")
 
     # Track results and execution state

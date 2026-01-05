@@ -1,4 +1,8 @@
 import os
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
 
 DEFAULT_CONFIG = {
     "project_dir": os.path.abspath(os.path.join(os.path.dirname(__file__), ".")),
@@ -10,9 +14,9 @@ DEFAULT_CONFIG = {
     ),
     # LLM settings
     "llm_provider": "openai",
-    "deep_think_llm": "gpt-4o-mini",
-    "quick_think_llm": "gpt-5-nano",
-    "backend_url": "https://api.openai.com/v1",
+    "deep_think_llm": "gpt-4o",
+    "quick_think_llm": "gpt-4o",
+    "backend_url": os.getenv("OPENAI_API_BASE", "https://api.openai.com/v1"),
     # Debate and discussion settings
     "max_debate_rounds": 1,
     "max_risk_discuss_rounds": 1,
@@ -21,8 +25,10 @@ DEFAULT_CONFIG = {
     # Category-level configuration (default for all tools in category)
     "data_vendors": {
         "core_stock_apis": "yfinance",       # Options: yfinance, alpha_vantage, local
+        "core_crypto_apis": "alpha_vantage", # Options: alpha_vantage (DIGITAL_CURRENCY_DAILY)
         "technical_indicators": "yfinance",  # Options: yfinance, alpha_vantage, local
         "fundamental_data": "alpha_vantage", # Options: openai, alpha_vantage, local
+        "crypto_fundamentals": "coinmarketcap",  # Options: coinmarketcap
         "news_data": "alpha_vantage",        # Options: openai, alpha_vantage, google, local
     },
     # Tool-level configuration (takes precedence over category-level)
@@ -52,5 +58,13 @@ DEFAULT_CONFIG = {
         "SOL": "SOL",
         "AVAX": "AVAX",
         "MATIC": "MATIC",
+        "HYPE": "HYPE",
+        "UNI": "UNI",
+        "LINK": "LINK",
+        "XRP": "XRP",
+        "AAVE": "AAVE",
+        "TAO": "TAO",
+        "ARB": "ARB",
+        "OP": "OP",
     },
 }
