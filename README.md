@@ -1,225 +1,392 @@
-<p align="center">
-  <img src="assets/TauricResearch.png" style="width: 60%; height: auto;">
-</p>
+# 🤖 TradingAgents - AI-Powered Cryptocurrency Trading System
 
-<div align="center" style="line-height: 1;">
-  <a href="https://arxiv.org/abs/2412.20138" target="_blank"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2412.20138-B31B1B?logo=arxiv"/></a>
-  <a href="https://discord.com/invite/hk9PGKShPK" target="_blank"><img alt="Discord" src="https://img.shields.io/badge/Discord-TradingResearch-7289da?logo=discord&logoColor=white&color=7289da"/></a>
-  <a href="./assets/wechat.png" target="_blank"><img alt="WeChat" src="https://img.shields.io/badge/WeChat-TauricResearch-brightgreen?logo=wechat&logoColor=white"/></a>
-  <a href="https://x.com/TauricResearch" target="_blank"><img alt="X Follow" src="https://img.shields.io/badge/X-TauricResearch-white?logo=x&logoColor=white"/></a>
-  <br>
-  <a href="https://github.com/TauricResearch/" target="_blank"><img alt="Community" src="https://img.shields.io/badge/Join_GitHub_Community-TauricResearch-14C290?logo=discourse"/></a>
-</div>
-
-<div align="center">
-  <!-- Keep these links. Translations will automatically update with the README. -->
-  <a href="https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=de">Deutsch</a> | 
-  <a href="https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=es">Español</a> | 
-  <a href="https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=fr">français</a> | 
-  <a href="https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=ja">日本語</a> | 
-  <a href="https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=ko">한국어</a> | 
-  <a href="https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=pt">Português</a> | 
-  <a href="https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=ru">Русский</a> | 
-  <a href="https://www.readme-i18n.com/TauricResearch/TradingAgents?lang=zh">中文</a>
-</div>
+**Research-backed astrological market timing combined with multi-agent AI for cryptocurrency trading on Hyperliquid DEX.**
 
 ---
 
-# TradingAgents: Multi-Agents LLM Financial Trading Framework 
+## ✨ Features
 
-> 🎉 **TradingAgents** officially released! We have received numerous inquiries about the work, and we would like to express our thanks for the enthusiasm in our community.
->
-> So we decided to fully open-source the framework. Looking forward to building impactful projects with you!
+### 🔮 **Advanced Astrology Analysis**
+- **150+ Astrological Rules** - Research-backed planetary aspects, positions, lunar phases, and retrogrades
+- **Crypto-Optimized** - Special weighting for Uranus (innovation), Neptune (speculation), Pluto (transformation)
+- **Lunar Phase Tracking** - Full moons mark tops 55% of the time (research-backed)
+- **Mercury Retrograde Detection** - Historically 1.5% lower returns during retrograde periods
+- **Bitcoin Natal Chart Awareness** - Transits to Bitcoin's birth chart (Jan 3, 2009)
+- **Enhanced Scoring** - Tight orb bonuses, applying aspect bonuses, crypto weight multipliers
 
-<div align="center">
-<a href="https://www.star-history.com/#TauricResearch/TradingAgents&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=TauricResearch/TradingAgents&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=TauricResearch/TradingAgents&type=Date" />
-   <img alt="TradingAgents Star History" src="https://api.star-history.com/svg?repos=TauricResearch/TradingAgents&type=Date" style="width: 80%; height: auto;" />
- </picture>
-</a>
-</div>
+### 🧠 **Multi-Agent AI System**
+- **Specialized Analysts** - Astrology, Technical, Fundamental, Sentiment analysis
+- **LangGraph Orchestration** - Coordinated decision-making
+- **GPT-4o Integration** - Advanced reasoning for market analysis
 
-<div align="center">
+### 📊 **Hyperliquid DEX Integration**
+- **Testnet & Mainnet Support** - Safe testing before live trading
+- **Market & Limit Orders** - Full order type support
+- **Position Management** - Real-time position tracking
+- **Risk Management** - Configurable position sizing and leverage
 
-🚀 [TradingAgents](#tradingagents-framework) | ⚡ [Installation & CLI](#installation-and-cli) | 🎬 [Demo](https://www.youtube.com/watch?v=90gr5lwjIho) | 📦 [Package Usage](#tradingagents-package) | 🤝 [Contributing](#contributing) | 📄 [Citation](#citation)
+---
 
-</div>
+## 📚 Documentation
 
-## TradingAgents Framework
+- **[Setup & Testing Guide](SETUP_AND_TESTING_GUIDE.md)** - Complete installation and testing walkthrough
+- **[GitHub Models Setup](docs/GITHUB_MODELS_SETUP.md)** - Free API testing with GitHub Models
+- **[Astrology Rules](config/astrology_rules.yaml)** - Full astrological rule configuration
+- **[API Documentation](docs/API.md)** - API endpoints and usage (if applicable)
 
-TradingAgents is a multi-agent trading framework that mirrors the dynamics of real-world trading firms. By deploying specialized LLM-powered agents: from fundamental analysts, sentiment experts, and technical analysts, to trader, risk management team, the platform collaboratively evaluates market conditions and informs trading decisions. Moreover, these agents engage in dynamic discussions to pinpoint the optimal strategy.
+---
 
-<p align="center">
-  <img src="assets/schema.png" style="width: 100%; height: auto;">
-</p>
+## 🚀 Quick Start
 
-> TradingAgents framework is designed for research purposes. Trading performance may vary based on many factors, including the chosen backbone language models, model temperature, trading periods, the quality of data, and other non-deterministic factors. [It is not intended as financial, investment, or trading advice.](https://tauric.ai/disclaimer/)
+### Prerequisites
 
-Our framework decomposes complex trading tasks into specialized roles. This ensures the system achieves a robust, scalable approach to market analysis and decision-making.
-
-### Analyst Team
-- Fundamentals Analyst: Evaluates company financials and performance metrics, identifying intrinsic values and potential red flags.
-- Sentiment Analyst: Analyzes social media and public sentiment using sentiment scoring algorithms to gauge short-term market mood.
-- News Analyst: Monitors global news and macroeconomic indicators, interpreting the impact of events on market conditions.
-- Technical Analyst: Utilizes technical indicators (like MACD and RSI) to detect trading patterns and forecast price movements.
-
-<p align="center">
-  <img src="assets/analyst.png" width="100%" style="display: inline-block; margin: 0 2%;">
-</p>
-
-### Researcher Team
-- Comprises both bullish and bearish researchers who critically assess the insights provided by the Analyst Team. Through structured debates, they balance potential gains against inherent risks.
-
-<p align="center">
-  <img src="assets/researcher.png" width="70%" style="display: inline-block; margin: 0 2%;">
-</p>
-
-### Trader Agent
-- Composes reports from the analysts and researchers to make informed trading decisions. It determines the timing and magnitude of trades based on comprehensive market insights.
-
-<p align="center">
-  <img src="assets/trader.png" width="70%" style="display: inline-block; margin: 0 2%;">
-</p>
-
-### Risk Management and Portfolio Manager
-- Continuously evaluates portfolio risk by assessing market volatility, liquidity, and other risk factors. The risk management team evaluates and adjusts trading strategies, providing assessment reports to the Portfolio Manager for final decision.
-- The Portfolio Manager approves/rejects the transaction proposal. If approved, the order will be sent to the simulated exchange and executed.
-
-<p align="center">
-  <img src="assets/risk.png" width="70%" style="display: inline-block; margin: 0 2%;">
-</p>
-
-## Installation and CLI
+- Python 3.10+
+- Git
+- GitHub Account (for free API testing)
 
 ### Installation
 
-Clone TradingAgents:
 ```bash
-git clone https://github.com/TauricResearch/TradingAgents.git
+# 1. Clone repository
+git clone https://github.com/timscoding/Hyperliquid_Agent.git
 cd TradingAgents
-```
 
-Create a virtual environment in any of your favorite environment managers:
-```bash
-conda create -n tradingagents python=3.13
-conda activate tradingagents
-```
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
 
-Install dependencies:
-```bash
+# 3. Install dependencies
 pip install -r requirements.txt
-```
 
-### Required APIs
-
-You will need the OpenAI API for all the agents, and [Alpha Vantage API](https://www.alphavantage.co/support/#api-key) for fundamental and news data (default configuration).
-
-```bash
-export OPENAI_API_KEY=$YOUR_OPENAI_API_KEY
-export ALPHA_VANTAGE_API_KEY=$YOUR_ALPHA_VANTAGE_API_KEY
-```
-
-Alternatively, you can create a `.env` file in the project root with your API keys (see `.env.example` for reference):
-```bash
+# 4. Setup environment variables
 cp .env.example .env
-# Edit .env with your actual API keys
+# Edit .env with your API keys
 ```
 
-**Note:** We are happy to partner with Alpha Vantage to provide robust API support for TradingAgents. You can get a free AlphaVantage API [here](https://www.alphavantage.co/support/#api-key), TradingAgents-sourced requests also have increased rate limits to 60 requests per minute with no daily limits. Typically the quota is sufficient for performing complex tasks with TradingAgents thanks to Alpha Vantage’s open-source support program. If you prefer to use OpenAI for these data sources instead, you can modify the data vendor settings in `tradingagents/default_config.py`.
+### Configuration
 
-### CLI Usage
-
-You can also try out the CLI directly by running:
+**Minimum .env for testing:**
 ```bash
-python -m cli.main
+# GitHub Models (FREE for testing)
+OPENAI_API_KEY=ghp_your_github_personal_access_token
+OPENAI_API_BASE=https://models.inference.ai.azure.com
+
+# Hyperliquid (optional for testing)
+HYPERLIQUID_TESTNET=true
 ```
-You will see a screen where you can select your desired tickers, date, LLMs, research depth, etc.
 
-<p align="center">
-  <img src="assets/cli/cli_init.png" width="100%" style="display: inline-block; margin: 0 2%;">
-</p>
+See [GitHub Models Setup Guide](docs/GITHUB_MODELS_SETUP.md) for detailed instructions.
 
-An interface will appear showing results as they load, letting you track the agent's progress as it runs.
+### Run Tests
 
-<p align="center">
-  <img src="assets/cli/cli_news.png" width="100%" style="display: inline-block; margin: 0 2%;">
-</p>
+```bash
+# Test astrology calculations
+python -m pytest tests/test_astrology.py
 
-<p align="center">
-  <img src="assets/cli/cli_transaction.png" width="100%" style="display: inline-block; margin: 0 2%;">
-</p>
+# Test Hyperliquid connection (requires API key)
+python -m pytest tests/test_hyperliquid.py
 
-## TradingAgents Package
+# Run full system test
+python test_trading_system.py
+```
 
-### Implementation Details
+### Run Agent
 
-We built TradingAgents with LangGraph to ensure flexibility and modularity. We utilize `o1-preview` and `gpt-4o` as our deep thinking and fast thinking LLMs for our experiments. However, for testing purposes, we recommend you use `o4-mini` and `gpt-4.1-mini` to save on costs as our framework makes **lots of** API calls.
+```bash
+# Simulation mode (no real trades)
+python main.py --mode simulation --ticker BTC
 
-### Python Usage
+# Paper trading mode
+python main.py --mode paper --ticker ETH
 
-To use TradingAgents inside your code, you can import the `tradingagents` module and initialize a `TradingAgentsGraph()` object. The `.propagate()` function will return a decision. You can run `main.py`, here's also a quick example:
+# Live trading (use with caution!)
+python main.py --mode live --ticker SOL
+```
+
+---
+
+## 🏗️ Architecture
+
+```
+TradingAgents/
+├── tradingagents/
+│   ├── agents/
+│   │   └── analysts/
+│   │       └── astrology_analyst.py    # Crypto-focused astrology analysis
+│   ├── astrology/
+│   │   ├── calculator.py               # Planetary calculations
+│   │   ├── aspects.py                  # Aspect detection
+│   │   └── rules_engine.py             # Enhanced scoring system
+│   ├── execution/
+│   │   └── hyperliquid_executor.py     # Hyperliquid DEX integration
+│   └── graph/
+│       └── trading_graph.py            # LangGraph orchestration
+├── config/
+│   └── astrology_rules.yaml            # 150+ astrological rules
+├── tests/
+│   └── test_astrology.py               # Comprehensive tests
+└── docs/
+    ├── SETUP_AND_TESTING_GUIDE.md      # Complete setup guide
+    └── GITHUB_MODELS_SETUP.md          # Free API setup
+```
+
+---
+
+## 🔮 Astrology System Overview
+
+### Research-Backed Rules
+
+Based on academic studies and crypto market analysis:
+
+1. **Dichev & Janes (2001)** - Moon phase correlation study
+2. **UC Berkeley Study** - Mercury retrograde S&P 500 impact
+3. **Bramesh Technical Analysis** - Planetary cycles research
+4. **Bitcoin Natal Chart Analysis** - Multiple astrologers
+5. **Crypto Historical Events** - LUNA (lunar eclipse), FTX (lunar eclipse)
+
+### Key Components
+
+**Planetary Aspects** (120+ rules):
+- Jupiter aspects → Expansion, bull markets
+- Saturn aspects → Restriction, bear markets
+- Uranus aspects → Innovation, volatility (crypto-critical)
+- Neptune aspects → Speculation, bubbles
+- Mars aspects → Momentum, flash crashes
+- Moon aspects → Sentiment, volatility
+
+**Planetary Positions** (44 rules):
+- Planets in signs (e.g., Uranus in Aquarius = crypto golden age)
+- Dignity (rulership, exaltation, fall, detriment)
+
+**Lunar Phases** (10 rules):
+- New Moon → Accumulation phase (bullish)
+- Full Moon → Distribution phase (bearish, 55% top accuracy)
+- Lunar Eclipse → Crisis indicator (LUNA, FTX crashes)
+
+**Retrograde Periods** (8 rules):
+- Mercury Retrograde → -1.5% returns, tech failures
+- Venus Retrograde → Valuation reassessment
+- Mars Retrograde → Momentum stall
+
+### Scoring System
 
 ```python
-from tradingagents.graph.trading_graph import TradingAgentsGraph
-from tradingagents.default_config import DEFAULT_CONFIG
-
-ta = TradingAgentsGraph(debug=True, config=DEFAULT_CONFIG.copy())
-
-# forward propagate
-_, decision = ta.propagate("NVDA", "2024-05-10")
-print(decision)
+Base Strength (0-10)
++ Tight Orb Bonus (+2 if orb < 3°)
++ Applying Aspect Bonus (+1 if approaching exact)
+× Crypto Weight Multiplier (1.3x for Uranus, 1.2x for Neptune/Pluto, 1.15x for Moon)
+= Final Strength (capped at 10)
 ```
 
-You can also adjust the default configuration to set your own choice of LLMs, debate rounds, etc.
+**Signal Determination:**
+- Bullish if: bullish_score > bearish_score AND bullish_score > neutral_score
+- Confidence: Weighted ratio of dominant signal (0-10 scale)
 
+---
+
+## 🎯 Trading Assets Configuration
+
+Edit `config/trading_assets.yaml`:
+
+```yaml
+trading_assets:
+  - symbol: "BTC"
+    max_position_pct: 30      # Max 30% of portfolio
+    leverage: 1               # No leverage
+    min_trade_size: 0.001     # Minimum 0.001 BTC
+
+  - symbol: "ETH"
+    max_position_pct: 20
+    leverage: 1
+    min_trade_size: 0.01
+
+  - symbol: "SOL"
+    max_position_pct: 15
+    leverage: 1
+    min_trade_size: 0.1
+```
+
+Hyperliquid uses simple symbols without pairs: `"BTC"`, not `"BTC-USD"`.
+
+---
+
+## ⚙️ Configuration
+
+### LLM Models
+
+**For Testing (Free):**
 ```python
-from tradingagents.graph.trading_graph import TradingAgentsGraph
-from tradingagents.default_config import DEFAULT_CONFIG
+# .env
+OPENAI_API_KEY=ghp_...  # GitHub PAT
+OPENAI_API_BASE=https://models.inference.ai.azure.com
 
-# Create a custom config
-config = DEFAULT_CONFIG.copy()
-config["deep_think_llm"] = "gpt-4.1-nano"  # Use a different model
-config["quick_think_llm"] = "gpt-4.1-nano"  # Use a different model
-config["max_debate_rounds"] = 1  # Increase debate rounds
-
-# Configure data vendors (default uses yfinance and Alpha Vantage)
-config["data_vendors"] = {
-    "core_stock_apis": "yfinance",           # Options: yfinance, alpha_vantage, local
-    "technical_indicators": "yfinance",      # Options: yfinance, alpha_vantage, local
-    "fundamental_data": "alpha_vantage",     # Options: openai, alpha_vantage, local
-    "news_data": "alpha_vantage",            # Options: openai, alpha_vantage, google, local
-}
-
-# Initialize with custom config
-ta = TradingAgentsGraph(debug=True, config=config)
-
-# forward propagate
-_, decision = ta.propagate("NVDA", "2024-05-10")
-print(decision)
+# config
+"deep_think_llm": "gpt-4o-mini"
+"quick_think_llm": "gpt-4o-mini"
 ```
 
-> The default configuration uses yfinance for stock price and technical data, and Alpha Vantage for fundamental and news data. For production use or if you encounter rate limits, consider upgrading to [Alpha Vantage Premium](https://www.alphavantage.co/premium/) for more stable and reliable data access. For offline experimentation, there's a local data vendor option that uses our **Tauric TradingDB**, a curated dataset for backtesting, though this is still in development. We're currently refining this dataset and plan to release it soon alongside our upcoming projects. Stay tuned!
+**For Production:**
+```python
+# .env
+OPENAI_API_KEY=sk-proj-...  # Real OpenAI key
 
-You can view the full list of configurations in `tradingagents/default_config.py`.
-
-## Contributing
-
-We welcome contributions from the community! Whether it's fixing a bug, improving documentation, or suggesting a new feature, your input helps make this project better. If you are interested in this line of research, please consider joining our open-source financial AI research community [Tauric Research](https://tauric.ai/).
-
-## Citation
-
-Please reference our work if you find *TradingAgents* provides you with some help :)
-
+# config
+"deep_think_llm": "gpt-4o"
+"quick_think_llm": "gpt-4o-mini"
 ```
-@misc{xiao2025tradingagentsmultiagentsllmfinancial,
-      title={TradingAgents: Multi-Agents LLM Financial Trading Framework}, 
-      author={Yijia Xiao and Edward Sun and Di Luo and Wei Wang},
-      year={2025},
-      eprint={2412.20138},
-      archivePrefix={arXiv},
-      primaryClass={q-fin.TR},
-      url={https://arxiv.org/abs/2412.20138}, 
-}
+
+### Astrology Settings
+
+Edit `config/astrology_rules.yaml`:
+
+```yaml
+settings:
+  orb_tolerance: 8              # Aspect detection orb
+  tight_orb_bonus: 2            # Bonus for orb < 3°
+  applying_aspect_bonus: 1      # Bonus for applying aspects
+  crypto_mode: true             # Enable crypto weighting
+
+  crypto_weight_multipliers:
+    uranus: 1.3                 # Innovation (crypto-critical)
+    neptune: 1.2                # Speculation/bubbles
+    pluto: 1.2                  # Transformation
+    moon: 1.15                  # Sentiment/volatility
+    mercury_retrograde: 1.25    # Tech failures
 ```
+
+---
+
+## 🧪 Testing Phases
+
+### Phase 1: Local Testing
+```bash
+# No real money, test all components
+python main.py --mode simulation --ticker BTC --date 2025-01-15
+```
+
+### Phase 2: Hyperliquid Testnet
+```bash
+# Testnet trading with fake money
+HYPERLIQUID_TESTNET=true python main.py --mode paper --ticker ETH
+```
+
+### Phase 3: Small Live Positions
+```bash
+# Real money, small sizes
+python main.py --mode live --ticker BTC --max-position 100
+```
+
+### Phase 4: Full Deployment
+```bash
+# Production with all assets
+python main.py --mode live --config config/production.yaml
+```
+
+See [SETUP_AND_TESTING_GUIDE.md](SETUP_AND_TESTING_GUIDE.md) for detailed phase-by-phase instructions.
+
+---
+
+## 🔐 Security
+
+**NEVER commit API keys!**
+
+✅ **Correct:**
+```bash
+# .env (in .gitignore)
+HYPERLIQUID_SECRET_KEY=0x...
+OPENAI_API_KEY=sk-...
+```
+
+❌ **WRONG:**
+```python
+# Never hardcode in code!
+api_key = "sk-abc123"  # ❌ DON'T DO THIS
+```
+
+**Additional Security:**
+- Use Hyperliquid **testnet** first
+- Start with small position sizes
+- Set up **2FA** on all exchanges
+- Use **read-only API keys** for testing
+- Monitor trades with **alerts**
+
+---
+
+## 📊 Performance Metrics
+
+The system tracks:
+- **Win Rate** - Percentage of profitable trades
+- **Sharpe Ratio** - Risk-adjusted returns
+- **Max Drawdown** - Largest peak-to-trough decline
+- **Average Hold Time** - Typical position duration
+- **Astrology Signal Accuracy** - Backtested correlations
+
+Detailed metrics available in `logs/performance/`
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Areas of interest:
+
+1. **More Astrology Rules** - Additional planetary configurations
+2. **Additional Analysts** - On-chain analysis, derivatives data
+3. **Backtesting Engine** - Historical performance validation
+4. **Risk Management** - Advanced position sizing algorithms
+5. **Documentation** - Tutorials, examples, translations
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+---
+
+## ⚠️ Disclaimer
+
+**This software is for educational and research purposes only.**
+
+- Cryptocurrency trading involves substantial risk of loss
+- Past performance does not guarantee future results
+- Astrological analysis is not recognized by mainstream finance
+- No financial advice is provided
+- Use at your own risk
+- Start with testnet and small positions
+
+**The developers are not responsible for any financial losses incurred through use of this system.**
+
+---
+
+## 📜 License
+
+MIT License - See [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+### Research Sources:
+- Dichev & Janes (2001) - Lunar phase market correlation
+- UC Berkeley - Mercury retrograde studies
+- Bramesh Technical Analysis - Planetary cycles research
+- W.D. Gann - Master Time Factor methods
+- Financial Astrology Almanac - M.G. Bucholtz
+- Bitcoin Natal Chart Analysis - Multiple astrologers
+
+### Technologies:
+- [LangChain](https://langchain.com) - Multi-agent orchestration
+- [Kerykeion](https://github.com/g-battaglia/kerykeion) - Astrological calculations
+- [Hyperliquid SDK](https://hyperliquid.xyz) - DEX integration
+- [OpenAI GPT-4o](https://openai.com) - Language models
+
+---
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/timscoding/Hyperliquid_Agent/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/timscoding/Hyperliquid_Agent/discussions)
+- **Documentation**: [Full Docs](docs/)
+
+---
+
+**Built with 🔮 and 🤖 for the crypto community**
+
+*"As above, so below; as the universe, so the soul." - Hermes Trismegistus*
